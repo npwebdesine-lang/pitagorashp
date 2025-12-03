@@ -1,0 +1,263 @@
+/* ===== Global Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Body Background (Option 5) ===== */
+body {
+  margin: 0;
+  font-family: "Heebo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  direction: rtl;
+  color: #e8edf3;
+  line-height: 1.7;
+
+  /* רקע: צבע נקי בצד ימין, תמונה בצד שמאל, עם מעבר הדרגתי */
+  background: linear-gradient(
+      to left,
+      #0f172a 0%,
+      #0f172a 30%,
+      rgba(15, 23, 42, 0.92) 45%,
+      rgba(15, 23, 42, 0.7) 60%,
+      rgba(15, 23, 42, 0.35) 75%,
+      rgba(15, 23, 42, 0) 100%
+    ),
+    url("bg-building.jpg") no-repeat left center;
+  background-size: cover;
+}
+
+/* ===== Layout ===== */
+header,
+section,
+footer {
+  width: 100%;
+  padding: 60px 0;
+  text-align: center;
+}
+
+/* ===== Header Navigation ===== */
+/* ===== Header Navigation ===== */
+header {
+  padding-top: 30px;
+}
+
+nav {
+  margin-top: 25px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  list-style: none;
+}
+
+nav li {
+  position: relative;
+}
+
+nav a {
+  text-decoration: none;
+  color: #e5e7eb; /* טקסט בהיר */
+  font-size: 18px;
+  font-weight: 500;
+  padding-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+/* קו צהוב עדין בהובר */
+nav a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background-color: #f7b500;
+  border-radius: 999px;
+  transition: width 0.2s ease;
+}
+
+nav a:hover {
+  color: #f7b500;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== Logo ===== */
+.logo {
+  width: 130px;
+  margin-bottom: 20px;
+}
+
+/* ===== Titles ===== */
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 42px;
+  color: #ffffff;
+}
+
+h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #d9e3ec;
+}
+
+h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #c4d2df;
+}
+
+/* ===== Paragraphs ===== */
+p {
+  max-width: 700px;
+  margin: 0 auto 20px auto;
+  font-size: 18px;
+  color: #cdd6dd;
+}
+
+/* ===== Buttons ===== */
+button,
+.cta-btn {
+  background: #f7b500;
+  color: #0f172a;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.25s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+button:hover,
+.cta-btn:hover {
+  background: #ffca3a;
+  transform: translateY(-2px);
+}
+
+/* ===== Services Grid ===== */
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* כרטיסי שירות – רקע כהה ומודגש */
+.service-box {
+  background: rgba(15, 23, 42, 0.9); /* כהה יותר */
+  border: 1px solid rgba(148, 163, 184, 0.6); /* קו עדין בהיר */
+  padding: 30px 24px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.6);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.service-box:hover {
+  transform: translateY(-6px);
+  background: rgba(15, 23, 42, 0.96);
+  border-color: rgba(249, 250, 251, 0.9);
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.8);
+}
+
+/* טקסט בהיר יותר בתוך הכרטיסים */
+.service-box h3 {
+  color: #f9fafb;
+  margin-bottom: 12px;
+}
+
+.service-box p {
+  color: #e5e7eb;
+  font-size: 0.97rem;
+}
+
+/* ===== CEO Card ===== */
+.ceo-card {
+  width: 320px;
+  margin: 50px auto;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 25px;
+  backdrop-filter: blur(4px);
+  transition: 0.3s;
+}
+
+.ceo-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.ceo-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 3px solid #f7b500;
+}
+
+.ceo-card h3 {
+  margin-bottom: 8px;
+}
+
+.ceo-card p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* ===== Footer ===== */
+footer {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 40px 0;
+  color: #b6c1cd;
+  margin-top: 50px;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer ul li {
+  margin-bottom: 10px;
+}
+
+footer a {
+  color: #7cc0ff;
+  text-decoration: none;
+}
+footer a:hover {
+  color: #a8d7ff;
+}
+
+/* ===== Section fade-in Animation ===== */
+section,
+header,
+footer {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
