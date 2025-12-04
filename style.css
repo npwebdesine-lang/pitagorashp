@@ -5,30 +5,46 @@
   box-sizing: border-box;
 }
 
-/* ============== BODY – רקע בניין מואר משמאל וכהה מימין ============== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============== BODY כללי + רקע עם הבניין ============== */
 body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
   font-family: "Heebo", system-ui, -apple-system, "Segoe UI", sans-serif;
   direction: rtl;
   color: #e5e7eb;
   line-height: 1.7;
 
-  /* כהה בצד ימין, הולך ונפתח לשמאל עד שהתמונה ברורה */
-  background-image: linear-gradient(
+  h1,
+  h2,
+  h3,
+  nav a,
+  .cta-btn {
+    font-family: "Heebo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  /* רקע כהה מימין + תמונת בניין בהדרגתיות משמאל */
+  background: linear-gradient(
       to left,
-      rgba(15, 23, 42, 0.95) 0%,
-      rgba(15, 23, 42, 0.9) 25%,
-      rgba(15, 23, 42, 0.7) 45%,
-      rgba(15, 23, 42, 0.4) 65%,
-      rgba(15, 23, 42, 0.15) 80%,
-      rgba(15, 23, 42, 0) 100%
+      rgba(15, 23, 42, 0.98) 25%,
+      rgba(15, 23, 42, 0.9) 45%,
+      rgba(15, 23, 42, 0.6) 65%,
+      rgba(15, 23, 42, 0.25) 80%,
+      transparent 100%
     ),
     url("bg-building.jpg");
+
   background-size: cover;
   background-position: left center;
-  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-/* כל הסקשנים והפוטר – רוחב מקסימלי ונעים */
+/* סקשנים כלליים */
 section,
 footer {
   max-width: 1160px;
@@ -37,63 +53,111 @@ footer {
 }
 
 /* ============== HEADER – לוגו + כותרות + NAV ============== */
+.logo {
+  width: 160px; /* גודל מתאים לדסקטופ */
+  height: 160px;
+  border-radius: 50%; /* הופך את המסגרת לעיגול מושלם */
+  padding: 20px; /* ריווח פנימי מהמסגרת */
+  background: rgba(255, 255, 255, 0.08); /* עיגול שקוף עדין */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35); /* צל יוקרתי */
+  backdrop-filter: blur(6px); /* אפקט זכוכית מט */
+  object-fit: contain; /* שהלוגו יישאר פרופורציונלי */
+  display: block;
+  margin: 0 auto 20px auto; /* למרכז את הלוגו */
+  transition: 0.3s ease;
+}
+
+/* אפקט הובר קטן ואלגנטי */
+.logo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* ===== HEADER – לוגו + כותרת + ניווט ===== */
+
 header {
   max-width: 1160px;
   margin: 0 auto;
-  padding: 30px 20px 10px;
-  text-align: center; /* כל מה שב-header ממורכז */
+  padding: 32px 20px 18px;
+  text-align: center;
 }
 
-/* לוגו */
+/* לוגו עגול שכבר עשית – רק מיישר לגודל נעים */
 header .logo {
   display: block;
-  margin: 0 auto 16px;
-  max-width: 140px;
-  height: auto;
+  margin: 0 auto 18px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: radial-gradient(
+    circle at 30% 20%,
+    #ffffff 0%,
+    #e5e7eb 35%,
+    #111827 100%
+  );
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
 }
 
-/* כותרת ראשית ומשנית */
+/* כותרת ראשית – מודגשת אבל לא צווחת */
 header h1 {
-  font-size: 2.6rem;
-  color: #ffffff;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
+  font-size: 2.8rem;
+  line-height: 1.2;
+  margin-bottom: 6px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #f9fafb;
 }
 
+/* כותרת משנית – טיפה יותר עדינה */
 header h2 {
-  font-size: 1.8rem;
+  font-size: 1.2rem;
+  font-weight: 400;
   color: #e5e7eb;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
-/* ניווט */
+/* ===== ניווט – קפסולת זכוכית מתחת לכותרת ===== */
+
 header nav {
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 header nav ul {
   list-style: none;
-  display: flex;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  gap: 28px;
-  flex-wrap: wrap; /* במובייל נשבר לשתי שורות בקלות */
+  flex-wrap: wrap;
+
+  padding: 10px 26px;
+  gap: 20px;
+
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.88);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(10px); /* אפקט “זכוכית” */
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(148, 163, 184, 0.7);
 }
 
 header nav li {
   position: relative;
 }
 
+/* קישורי ניווט */
 header nav a {
   text-decoration: none;
   color: #e5e7eb;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  padding-bottom: 4px;
-  transition: color 0.2s ease;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 2px;
+  transition: color 0.2s ease, transform 0.15s ease;
 }
 
-/* קו צהוב עדין בהובר */
+/* קו תחתון עדין בהובר */
 header nav a::after {
   content: "";
   position: absolute;
@@ -101,31 +165,74 @@ header nav a::after {
   bottom: -3px;
   width: 0;
   height: 2px;
-  background-color: #f7b500;
   border-radius: 999px;
+  background: #facc15;
   transition: width 0.2s ease;
 }
 
 header nav a:hover {
-  color: #f7b500;
+  color: #facc15;
+  transform: translateY(-1px);
 }
 
 header nav a:hover::after {
   width: 100%;
 }
 
-/* ============== HERO – כרטיס כהה מעל הרקע ============== */
+/* ===== רספונסיביות לניווט וכותרת במובייל ===== */
+
+@media (max-width: 768px) {
+  header {
+    padding: 22px 12px 10px;
+  }
+
+  header .logo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 14px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header h2 {
+    font-size: 1rem;
+    margin-bottom: 16px;
+  }
+
+  header nav ul {
+    padding: 8px 16px;
+    gap: 12px;
+    border-radius: 14px; /* פחות “קפסולה” כי יש שבירת שורות */
+  }
+
+  header nav a {
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.7rem;
+  }
+
+  header h2 {
+    font-size: 0.95rem;
+  }
+
+  header nav ul {
+    padding: 8px 10px;
+    gap: 10px;
+  }
+}
+
+/* ============== HERO ============== */
 #hero {
   text-align: center;
   color: #f9fafb;
-  padding-top: 40px;
-  padding-bottom: 60px;
-  margin-top: 10px;
-
-  background: rgba(15, 23, 42, 0.9);
-  border-radius: 22px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
+  padding: 40px 20px 60px;
 }
 
 #hero h2 {
@@ -136,10 +243,10 @@ header nav a:hover::after {
 #hero p {
   max-width: 720px;
   margin: 0 auto 26px;
-  color: #e5e7eb;
+  color: #dbe0e8;
 }
 
-/* כפתור CTA */
+/* כפתור */
 .cta-btn {
   background: #f7b500;
   color: #0f172a;
@@ -150,68 +257,77 @@ header nav a:hover::after {
   text-decoration: none;
   display: inline-block;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
-  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  transition: 0.2s ease;
 }
 
 .cta-btn:hover {
   background: #ffca3a;
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.65);
 }
 
-/* ============== סקשנים כלליים (על החברה / למה לבחור / פוטר) ============== */
+/* ============== כותרות סקשנים ============== */
 section h2 {
   text-align: center;
   font-size: 2rem;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   color: #f9fafb;
 }
 
 section p {
   max-width: 760px;
   margin: 0 auto 14px;
+}
+
+/* ============== מי אנחנו ============== */
+#about {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 18px;
+  padding: 40px 28px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+.bullet-list {
+  max-width: 760px;
+  margin: 14px auto;
+  list-style: disc;
+  padding-right: 22px;
+}
+
+.bullet-list li {
+  margin-bottom: 6px;
   color: #e5e7eb;
 }
 
-/* על החברה + למה לבחור בנו – כרטיסים כהים */
-#about,
-#why-us {
-  background: rgba(15, 23, 42, 0.92);
-  border-radius: 18px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
-  margin-top: 40px;
-  backdrop-filter: blur(4px);
-}
-
-/* ============== שירותים ============== */
+/* ============== מה אנחנו עושים – כרטיסים ============== */
 #services {
   margin-top: 40px;
 }
 
 .services {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 32px;
-  margin-top: 22px;
+  max-width: 1160px;
+  margin: 0 auto;
 }
 
 .service-box {
-  background: rgba(15, 23, 42, 0.95);
+  flex: 1 1 280px;
+  max-width: 340px;
+  background: rgba(15, 23, 42, 0.96);
   border-radius: 18px;
-  padding: 24px 20px;
+  padding: 24px 22px;
   border: 1px solid rgba(148, 163, 184, 0.6);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.8);
-  transition: transform 0.25s ease, box-shadow 0.25s ease,
-    border-color 0.25s ease, background 0.25s ease;
-  text-align: center;
-  backdrop-filter: blur(4px);
+  text-align: right;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+  transition: 0.25s ease;
 }
 
 .service-box:hover {
   transform: translateY(-6px);
-  border-color: rgba(249, 250, 251, 0.95);
-  background: rgba(15, 23, 42, 0.98);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.9);
+  border-color: #fff;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
 }
 
 .service-box h3 {
@@ -219,11 +335,16 @@ section p {
   color: #f9fafb;
 }
 
-.service-box p {
-  font-size: 0.95rem;
+.service-box ul {
+  list-style: disc;
+  padding-right: 18px;
 }
 
-/* ============== כרטיס מנכ״ל ============== */
+.service-box li {
+  margin-bottom: 6px;
+}
+
+/* ============== מנכ״ל ============== */
 #ceo {
   margin-top: 40px;
 }
@@ -231,13 +352,11 @@ section p {
 .ceo-card {
   max-width: 520px;
   margin: 0 auto;
-  background: rgba(15, 23, 42, 0.96);
+  background: rgba(15, 23, 42, 0.95);
   border-radius: 20px;
-  padding: 28px 24px 30px;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(148, 163, 184, 0.7);
+  padding: 28px;
   text-align: center;
-  backdrop-filter: blur(4px);
+  border: 1px solid rgba(148, 163, 184, 0.7);
 }
 
 .ceo-img {
@@ -249,63 +368,31 @@ section p {
   border: 3px solid #f7b500;
 }
 
-.ceo-card h3 {
-  margin-bottom: 10px;
-}
-
-/* ============== FOOTER / צור קשר ============== */
+/* ============== FOOTER ============== */
 footer {
   text-align: center;
   padding-bottom: 40px;
 }
 
-footer p {
-  margin-bottom: 12px;
-}
-
-footer ul {
-  list-style: none;
-}
-
 footer li {
+  list-style: none;
   margin-bottom: 6px;
 }
 
 footer a {
   color: #f7b500;
   text-decoration: none;
-  font-weight: 500;
 }
 
-footer a:hover {
-  color: #ffca3a;
-}
-
-/* ============== אנימציית כניסה עדינה ============== */
+/* ============== אנימציות ============== */
 section,
 footer {
   opacity: 0;
   transform: translateY(18px);
-  animation: fadeInUp 0.7s ease-out forwards;
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
-#about {
-  animation-delay: 0.05s;
-}
-#why-us {
-  animation-delay: 0.1s;
-}
-#services {
-  animation-delay: 0.15s;
-}
-#ceo {
-  animation-delay: 0.2s;
-}
-footer {
-  animation-delay: 0.25s;
-}
-
-@keyframes fadeInUp {
+@keyframes fadeIn {
   to {
     opacity: 1;
     transform: translateY(0);
@@ -314,70 +401,116 @@ footer {
 
 /* ============== רספונסיביות ============== */
 @media (max-width: 768px) {
-  header {
-    padding: 20px 12px 6px;
-  }
-
   header .logo {
-    max-width: 110px;
-    margin-bottom: 12px;
+    max-width: 120px;
   }
-
   header h1 {
-    font-size: 2.1rem;
+    font-size: 2.2rem;
   }
-
   header h2 {
-    font-size: 1.4rem;
-  }
-
-  header nav ul {
-    gap: 16px;
-  }
-
-  section,
-  footer {
-    padding: 36px 14px;
-  }
-
-  #hero {
-    margin-top: 10px;
-    padding: 40px 16px 46px;
-    border-radius: 18px;
-  }
-
-  #hero h2 {
-    font-size: 1.7rem;
+    font-size: 1.3rem;
   }
 
   .services {
-    grid-template-columns: 1fr;
+    gap: 22px;
   }
 
-  .ceo-card {
+  .service-box {
     max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  body {
+    background-position: center;
+    background-attachment: scroll;
   }
 }
 
 @media (max-width: 480px) {
   header h1 {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
   }
-
   header h2 {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
   }
-
-  header nav ul {
-    gap: 10px;
-  }
-
   header nav a {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .cta-btn {
     width: 100%;
     max-width: 260px;
+  }
+}
+
+/* ============== סקשנים טקסטואליים ארוכים – כרטיס ממורכז ============== */
+
+.info-section {
+  padding-top: 40px;
+}
+
+/* הכותרת נשארת ממורכזת כמו שאר הסקשנים */
+.info-section h2 {
+  margin-bottom: 18px;
+}
+
+/* כרטיס רחב ומסודר לתוכן */
+.info-card {
+  max-width: 880px;
+  margin: 0 auto; /* מרכז את הכרטיס */
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: 20px;
+  padding: 26px 28px 30px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  text-align: right;
+}
+
+/* כותרת משנה בתוך הכרטיס */
+.info-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: #f9fafb;
+}
+
+/* פסקאות בתוך הכרטיס – בלי ה-centering הגלובלי */
+.info-card p {
+  max-width: none;
+  margin: 0 0 10px 0;
+  color: #e5e7eb;
+}
+
+/* רשימות בתוך הכרטיס */
+.info-card .bullet-list {
+  max-width: none;
+  margin: 0 0 10px 0;
+  padding-right: 20px;
+  list-style: disc;
+}
+
+.info-card .bullet-list li {
+  margin-bottom: 4px;
+}
+
+/* רספונסיביות לכרטיסים האלה */
+@media (max-width: 768px) {
+  .info-card {
+    max-width: 100%;
+    padding: 20px 18px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-card h3 {
+    font-size: 1.15rem;
+  }
+}
+
+/* ============== רספונסיביות ללוגו ============== */
+@media (max-width: 600px) {
+  .logo {
+    width: 120px;
+    height: 120px;
+    padding: 15px;
   }
 }
